@@ -1,0 +1,2 @@
+# strukturyDanych
+just exercises
