@@ -36,39 +36,20 @@ var data = [
 	},
 ];
 
-var board = document.getElementById ('board');
-var entry = '';
-var test = '';
+var newDiv = null;
 
-// Pętla do przejścia przez tablice
 for (var i = 0; i < data.length; i++) {	
 
-	// W 'entry' powstaje string, który wstrzykne do dokumentu. Jest rozbity na kilka sekwencji, dla lepszej czytelności kodu.
-	entry = '<div class="box ';
-
-	/* 
-	 * Sprawdzam czy w kluczu 'categories' jest węcej niż jedna wartość. Jeśli tak, to wykonuję pętle, aby je wszystkie dodać.
-	 * Zamiast pętli If, mógłbym zostawić samo for, też by działało. Jednak czytelniej (moim zdaniem) jest w takiej formie.  
-	 */
-	test += Object.values (data[i]['categories']);
+	newDiv = document.createElement('div');
+	newDiv.id = data[i]['id'];
+	newDiv.classList.add ('box');
+	newDiv.innerHTML = '<header>' + data[i]['title'] + '</header>' + data[i]['content'];
 	
-	console.log (test);
-
-
-
-
-	if (data[i]['categories'].length > 0) {
-		for (var a = 0; a < data[i]['categories'].length; a++) {
-			entry += data[i]['categories'][a] + ' ';
-		}		
+	for (var a = 0; a < data[i]['categories'].length; a++) {
+		newDiv.classList.add (data[i]['categories'][a]);
 	}
-	else {
-		entry += data[i]['categories'] + ' ';
-	}	
-	entry += '" id="' + data[i]['id'] + '">';
-	entry += '<header>' + data[i]['title'] + '</header>';
-	entry += data[i]['content'] + '</div> ';
 
-	board.innerHTML += (entry);	
+	// Wstrzyknięcie diva do board
+	document.querySelector('.board').appendChild (newDiv); 
 } 
 
