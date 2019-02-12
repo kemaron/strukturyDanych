@@ -1,3 +1,5 @@
+'use strict';
+
 var data = [
 	{
 		id: 'box1',
@@ -30,3 +32,16 @@ var data = [
 		categories: []
 	},
 ];
+
+var board = document.getElementById ('board');
+
+
+// Pętla do przejścia przez tablice
+for (var i = 0; i < data.length; i++) {
+    
+    board.innerHTML += ('<div class="box ' + data[i]['categories'] + '" id="' + data[i]['id'] + '"> <header>' + data[i]['title'] + '</header>' + data[i]['content'] + '</div> '); 
+    
+    console.log (i);
+}
+
+
