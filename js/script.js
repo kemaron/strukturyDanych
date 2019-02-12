@@ -38,7 +38,7 @@ var data = [
 
 var board = document.getElementById ('board');
 var entry = '';
-
+var test = '';
 
 // Pętla do przejścia przez tablice
 for (var i = 0; i < data.length; i++) {	
@@ -50,7 +50,13 @@ for (var i = 0; i < data.length; i++) {
 	 * Sprawdzam czy w kluczu 'categories' jest węcej niż jedna wartość. Jeśli tak, to wykonuję pętle, aby je wszystkie dodać.
 	 * Zamiast pętli If, mógłbym zostawić samo for, też by działało. Jednak czytelniej (moim zdaniem) jest w takiej formie.  
 	 */
+	test += Object.values (data[i]['categories']);
 	
+	console.log (test);
+
+
+
+
 	if (data[i]['categories'].length > 0) {
 		for (var a = 0; a < data[i]['categories'].length; a++) {
 			entry += data[i]['categories'][a] + ' ';
@@ -65,3 +71,4 @@ for (var i = 0; i < data.length; i++) {
 
 	board.innerHTML += (entry);	
 } 
+
