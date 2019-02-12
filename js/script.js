@@ -45,6 +45,7 @@ for (var i = 0; i < data.length; i++) {
 	newDiv.classList.add ('box');
 	newDiv.innerHTML = '<header>' + data[i]['title'] + '</header>' + data[i]['content'];
 	
+	//Dodanie wszystkich kategorii z data dla danego boxa
 	for (var a = 0; a < data[i]['categories'].length; a++) {
 		newDiv.classList.add (data[i]['categories'][a]);
 	}
