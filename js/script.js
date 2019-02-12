@@ -1,3 +1,6 @@
+/* eslint-disable no-magic-numbers */
+/* eslint-disable no-tabs */
+
 'use strict';
 
 var data = [
@@ -34,14 +37,31 @@ var data = [
 ];
 
 var board = document.getElementById ('board');
+var entry = '';
 
 
 // Pętla do przejścia przez tablice
-for (var i = 0; i < data.length; i++) {
-    
-    board.innerHTML += ('<div class="box ' + data[i]['categories'] + '" id="' + data[i]['id'] + '"> <header>' + data[i]['title'] + '</header>' + data[i]['content'] + '</div> '); 
-    
-    console.log (i);
-}
+for (var i = 0; i < data.length; i++) {	
 
+	// W 'entry' powstaje string, który wstrzykne do dokumentu. Jest rozbity na kilka sekwencji, dla lepszej czytelności kodu.
+	entry = '<div class="box ';
 
+	/* 
+	 * Sprawdzam czy w kluczu 'categories' jest węcej niż jedna wartość. Jeśli tak, to wykonuję pętle, aby je wszystkie dodać.
+	 * Zamiast pętli If, mógłbym zostawić samo for, też by działało. Jednak czytelniej (moim zdaniem) jest w takiej formie.  
+	 */
+	
+	if (data[i]['categories'].length > 0) {
+		for (var a = 0; a < data[i]['categories'].length; a++) {
+			entry += data[i]['categories'][a] + ' ';
+		}		
+	}
+	else {
+		entry += data[i]['categories'] + ' ';
+	}	
+	entry += '" id="' + data[i]['id'] + '">';
+	entry += '<header>' + data[i]['title'] + '</header>';
+	entry += data[i]['content'] + '</div> ';
+
+	board.innerHTML += (entry);	
+} 
