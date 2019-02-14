@@ -38,17 +38,14 @@ var data = [
 
 var newDiv = null;
 
+// W opariu o tablicę data, tworzę divy, przy wykorzystaniu  
 for (var i = 0; i < data.length; i++) {	
 
 	newDiv = document.createElement('div');
-	newDiv.id = data[i]['id'];
-	newDiv.classList.add ('box');
+	newDiv.id = data[i]['id'];	
 	newDiv.innerHTML = '<header>' + data[i]['title'] + '</header>' + data[i]['content'];
-	
-	//Dodanie wszystkich kategorii z data dla danego boxa
-	for (var a = 0; a < data[i]['categories'].length; a++) {
-		newDiv.classList.add (data[i]['categories'][a]);
-	}
+	newDiv.className = (data[i]['categories'].join(' '));
+	newDiv.classList.add ('box');
 
 	// Wstrzyknięcie diva do board
 	document.querySelector('.board').appendChild (newDiv); 
